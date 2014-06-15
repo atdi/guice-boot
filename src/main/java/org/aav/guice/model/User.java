@@ -23,28 +23,29 @@ public class User {
 
     @Id
     @Column(name = "id", unique = true)
-    private UUID id;
+    UUID id;
     @NotNull
     @Size(min = 3, max = 50)
     @Column(name = "first_name")
-    private String firstName;
+    String firstName;
     @NotNull
     @Size(min = 3, max = 50)
     @Column(name = "last_name")
-    private String lastName;
+    String lastName;
     @NotNull
     @Column(name = "birth_date")
-    private Date birthDate;
+    Date birthDate;
     @NotNull
     @Size(min = 3, max = 50)
     @Column(name = "email", unique = true)
-    private String email;
+    String email;
     @NotNull
     @Size(min = 3, max = 200)
     @Column(name = "password", unique = true)
-    private String password;
+    String password;
     @Column(name = "active")
-    private boolean active = false;
+    boolean active = false;
     @Column(name = "admin")
-    private boolean admin = false;
+    boolean admin = false;
+    
 }

@@ -11,5 +11,6 @@ public class PersistenceModule extends AbstractModule {
     @Override
     protected void configure() {
         install(new JpaPersistModule("demo-guice-test"));
+        bind(JpaInitializer.class).asEagerSingleton();
     }
 }
