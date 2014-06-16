@@ -9,6 +9,8 @@ import net.karneim.pojobuilder.GeneratePojoBuilder;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -17,8 +19,9 @@ import java.util.UUID;
 /**
  * Created by aurel.avramescu on 15/06/2014.
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@Table(uniqueConstraints={@UniqueConstraint(columnNames={"email"})})
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Getter
 @Setter
 @EqualsAndHashCode(of = {"id"})
