@@ -16,7 +16,8 @@ public class GuiceJerseyContextListener extends GuiceServletContextListener {
 
     @Override
     protected Injector getInjector() {
-        return Guice.createInjector(new JerseyModule(), new PersistenceModule());
+        return Guice.createInjector(new PersistenceModule(),
+                new JerseyModule());
     }
 
 }

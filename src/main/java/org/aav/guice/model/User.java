@@ -1,7 +1,9 @@
 package org.aav.guice.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 import net.karneim.pojobuilder.GeneratePojoBuilder;
 
 import javax.persistence.Column;
@@ -15,8 +17,10 @@ import java.util.UUID;
 /**
  * Created by aurel.avramescu on 15/06/2014.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 @Getter
+@Setter
 @EqualsAndHashCode(of = {"id"})
 @GeneratePojoBuilder(withCopyMethod = true)
 public class User {
@@ -47,5 +51,5 @@ public class User {
     boolean active = false;
     @Column(name = "admin")
     boolean admin = false;
-    
+
 }

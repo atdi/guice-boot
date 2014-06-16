@@ -6,6 +6,9 @@ import com.google.inject.Injector;
 import org.aav.guice.model.User;
 import org.aav.guice.model.UserBuilder;
 import org.aav.guice.modules.PersistenceModule;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -17,7 +20,9 @@ import java.util.UUID;
 public class UserRepositoryTest {
 
     @Inject
-    private JpaUserRepository repository;
+    private UserRepository repository;
+
+    private UUID lastId;
 
     @BeforeClass
     public void setUp() {
@@ -27,11 +32,27 @@ public class UserRepositoryTest {
 
     @Test
     public void testCreate() {
+        lastId = UUID.randomUUID();
         User user = new UserBuilder()
-                .withId(UUID.randomUUID())
+                .withId(lastId)
                 .withFirstName("FName")
                 .withLastName("LName").build();
-        repository.create(user);
+        User retUser = repository.create(user);
+        assertEquals(user, retUser);
+    }
+
+    @Test(dependsOnMethods = {"testCreate"})
+    public void testFind() {
+        User user = repository.findById(lastId);
+        assertNotNull(user);
+        user.setFirstName("UPdateFirst");
+        repository.update(user);
+    }
+
+    @Test(dependsOnMethods = {"testFind"})
+    public void testUpdate() {
+        User user = repository.findById(lastId);
+        assertEquals("UPdateFirst", user.getFirstName());
     }
 
 

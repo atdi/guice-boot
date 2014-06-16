@@ -1,10 +1,10 @@
 package org.aav.guice.service.repository;
 
 import com.google.inject.Inject;
+import com.google.inject.persist.Transactional;
 import org.aav.guice.model.User;
 
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 import java.util.UUID;
 
 /**

@@ -4,12 +4,7 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.Singleton;
 import org.aav.guice.web.GuiceBootApplication;
-import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
-import org.glassfish.jersey.servlet.WebConfig;
-
-import javax.servlet.ServletException;
-import java.util.Map;
 
 
 /**

@@ -20,7 +20,8 @@ public class Bootstrap {
     public static void main(String[] args) throws Exception {
         Server server = new Server(8000);
         GuiceServletContextListener contextListener = new GuiceJerseyContextListener();
-        ServletContextHandler handler = new ServletContextHandler(server, "/", ServletContextHandler.SESSIONS);
+        ServletContextHandler handler =
+                new ServletContextHandler(server, "/", ServletContextHandler.SESSIONS);
         handler.addFilter(GuiceFilter.class, "/*", EnumSet.allOf(DispatcherType.class));
         handler.addEventListener(contextListener);
         server.start();
