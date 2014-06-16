@@ -1,6 +1,7 @@
 package org.aav.guice.resources;
 
 import org.aav.guice.model.User;
+import org.aav.guice.model.UserBuilder;
 import org.aav.guice.service.UserService;
 
 import javax.inject.Inject;
@@ -27,10 +28,8 @@ public class UserResource {
     @POST
     @Consumes("application/json")
     public Response addUser(User user) {
-        if (userService == null) {
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }
-        return Response.ok().entity(userService.addUser(user)).build();
+        User copyUser = new UserBuilder().copy(user).withId(UUID.randomUUID()).build();
+        return Response.ok().entity(userService.addUser(copyUser)).build();
     }
 
     @GET

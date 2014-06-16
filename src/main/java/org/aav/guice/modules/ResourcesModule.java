@@ -1,16 +1,15 @@
 package org.aav.guice.modules;
 
-import com.google.inject.Binder;
-import com.google.inject.Module;
+import com.google.inject.AbstractModule;
 import org.aav.guice.resources.UserResource;
 
 /**
  * Created by aurel.avramescu on 14/06/2014.
  */
-public class ResourcesModule implements Module {
+public class ResourcesModule extends AbstractModule {
 
     @Override
-    public void configure(Binder binder) {
-        binder.bind(UserResource.class);
+    protected void configure() {
+        bind(UserResource.class);
     }
 }
