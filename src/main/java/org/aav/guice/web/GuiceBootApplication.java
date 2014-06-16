@@ -2,7 +2,6 @@ package org.aav.guice.web;
 
 import com.google.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
-import org.glassfish.jersey.server.ResourceConfig;
 import javax.ws.rs.ApplicationPath;
 
 /**
@@ -10,11 +9,6 @@ import javax.ws.rs.ApplicationPath;
  */
 @Slf4j
 @ApplicationPath("/*")
-public class GuiceBootApplication extends ResourceConfig {
-
-    @Inject
-    public GuiceBootApplication() {
-        packages("org.aav.guice.resources");
-    }
+public class GuiceBootApplication {
 
 }

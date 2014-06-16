@@ -1,10 +1,9 @@
 package org.aav.guice.resources;
 
-import com.google.inject.Inject;
-import com.google.inject.servlet.RequestScoped;
 import org.aav.guice.model.User;
 import org.aav.guice.service.UserService;
 
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -18,7 +17,6 @@ import java.util.UUID;
  * Created by aurel.avramescu on 14/06/2014.
  */
 @Path("/users")
-@RequestScoped
 @Produces("application/json")
 public class UserResource {
 
@@ -29,6 +27,9 @@ public class UserResource {
     @POST
     @Consumes("application/json")
     public Response addUser(User user) {
+        if (userService == null) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
         return Response.ok().entity(userService.addUser(user)).build();
     }
 

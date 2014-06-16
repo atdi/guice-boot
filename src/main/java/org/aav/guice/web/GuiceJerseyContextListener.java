@@ -4,7 +4,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
 import lombok.extern.slf4j.Slf4j;
-import org.aav.guice.modules.JerseyModule;
+import org.aav.guice.modules.ResourcesModule;
 import org.aav.guice.modules.PersistenceModule;
 
 
@@ -16,9 +16,9 @@ public class GuiceJerseyContextListener extends GuiceServletContextListener {
 
     @Override
     protected Injector getInjector() {
-        return Guice.createInjector(new PersistenceModule(),
-                new JerseyModule());
+        return Guice.createInjector(
+                new PersistenceModule(),
+                new ResourcesModule());
     }
-
 }
 

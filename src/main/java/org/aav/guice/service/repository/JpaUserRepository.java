@@ -1,6 +1,6 @@
 package org.aav.guice.service.repository;
 
-import com.google.inject.Inject;
+import javax.inject.Inject;
 import com.google.inject.persist.Transactional;
 import org.aav.guice.model.User;
 
