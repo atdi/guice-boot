@@ -2,7 +2,7 @@ package org.aav.guice.service;
 
 import com.google.inject.persist.Transactional;
 import org.aav.guice.model.User;
-import org.aav.guice.service.repository.UserRepository;
+import org.aav.guice.service.repository.GenericDAO;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -14,26 +14,26 @@ import java.util.UUID;
 @Singleton
 public class UserService {
 
-    private final UserRepository userRepository;
+    private final GenericDAO<User> userDAO;
 
     @Inject
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserService(GenericDAO<User> userRepository) {
+        this.userDAO = userRepository;
     }
 
     @Transactional
     public User addUser(User user) {
-        return userRepository.create(user);
+        return userDAO.create(user);
     }
 
     @Transactional
     public User updateUser(User user) {
-        return userRepository.update(user);
+        return userDAO.update(user);
     }
 
     @Transactional
     public User findById(UUID id) {
-        return userRepository.findById(id);
+        return userDAO.findById(id);
     }
 
 

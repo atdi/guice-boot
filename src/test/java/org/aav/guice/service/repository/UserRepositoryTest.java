@@ -1,7 +1,6 @@
 package org.aav.guice.service.repository;
 
 import com.google.inject.Guice;
-import com.google.inject.Inject;
 import com.google.inject.Injector;
 import org.aav.guice.model.User;
 import org.aav.guice.model.UserBuilder;
@@ -12,6 +11,7 @@ import static org.testng.Assert.assertNotNull;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import javax.inject.Inject;
 import java.util.UUID;
 
 /**
@@ -20,13 +20,13 @@ import java.util.UUID;
 public class UserRepositoryTest {
 
     @Inject
-    private UserRepository repository;
+    private GenericDAO<User> repository;
 
     private UUID lastId;
 
     @BeforeClass
     public void setUp() {
-        Injector injector = Guice.createInjector(new PersistenceModule());
+        Injector injector = Guice.createInjector(new PersistenceModule("demo-guice-boot"));
         injector.injectMembers(this);
     }
 
@@ -36,7 +36,10 @@ public class UserRepositoryTest {
         User user = new UserBuilder()
                 .withId(lastId)
                 .withFirstName("FName")
-                .withLastName("LName").build();
+                .withLastName("LName")
+                .withEmail("email@email.com")
+                .withPassword("password")
+                .build();
         User retUser = repository.create(user);
         assertEquals(user, retUser);
     }

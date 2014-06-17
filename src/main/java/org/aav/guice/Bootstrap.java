@@ -21,7 +21,7 @@ public class Bootstrap {
         ServletContextHandler handler =
                 new ServletContextHandler(server, "/", ServletContextHandler.SESSIONS);
         handler.addFilter(GuiceFilter.class, "/*", EnumSet.allOf(DispatcherType.class));
-        GuiceContextListener contextListener = new GuiceContextListener();
+        GuiceContextListener contextListener = new GuiceContextListener("demo-guice-boot");
         handler.addEventListener(contextListener);
         handler.addServlet(HttpServletDispatcher.class, "/*");
         server.start();

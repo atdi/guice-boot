@@ -3,6 +3,7 @@ package org.aav.guice.resources;
 import org.aav.guice.model.User;
 import org.aav.guice.model.UserBuilder;
 import org.aav.guice.service.UserService;
+import org.hibernate.exception.ConstraintViolationException;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -29,7 +30,11 @@ public class UserResource {
     @Consumes("application/json")
     public Response addUser(User user) {
         User copyUser = new UserBuilder().copy(user).withId(UUID.randomUUID()).build();
-        return Response.ok().entity(userService.addUser(copyUser)).build();
+        try {
+            return Response.ok().entity(userService.addUser(copyUser)).build();
+        } catch(ConstraintViolationException e) {
+            return Response.status(Response.Status.CONFLICT).build();
+        }
     }
 
     @GET

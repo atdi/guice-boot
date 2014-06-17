@@ -1,9 +1,6 @@
 package org.aav.guice.web;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
 import com.google.inject.Module;
-import com.google.inject.servlet.GuiceServletContextListener;
 import lombok.extern.slf4j.Slf4j;
 import org.aav.guice.modules.ResourcesModule;
 import org.aav.guice.modules.PersistenceModule;
@@ -20,6 +17,13 @@ import java.util.List;
 @Slf4j
 public class GuiceContextListener extends GuiceResteasyBootstrapServletContextListener {
 
+    private final String persistenceUnit;
+
+    public GuiceContextListener(String persistenceUnit) {
+        this.persistenceUnit = persistenceUnit;
+    }
+
+
     /**
      * Override this method to instantiate your {@link com.google.inject.Module}s yourself.
      *
@@ -29,7 +33,7 @@ public class GuiceContextListener extends GuiceResteasyBootstrapServletContextLi
     protected List<? extends Module> getModules(final ServletContext context)
     {
         final List<Module> result = new ArrayList<Module>();
-        result.add(new PersistenceModule());
+        result.add(new PersistenceModule(persistenceUnit));
         result.add(new ResourcesModule());
         return result;
     }

@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
@@ -26,29 +27,29 @@ import java.util.UUID;
 @Setter
 @EqualsAndHashCode(of = {"id"})
 @GeneratePojoBuilder(withCopyMethod = true)
-public class User {
+public class User implements Serializable {
 
     @Id
-    @Column(name = "id", unique = true)
+    @Column(name = "id", unique = true, nullable = false)
     UUID id;
     @NotNull
     @Size(min = 3, max = 50)
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     String firstName;
     @NotNull
     @Size(min = 3, max = 50)
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     String lastName;
     @NotNull
     @Column(name = "birth_date")
     Date birthDate;
     @NotNull
     @Size(min = 3, max = 50)
-    @Column(name = "email", unique = true)
+    @Column(name = "email", unique = true, nullable = false)
     String email;
     @NotNull
     @Size(min = 3, max = 200)
-    @Column(name = "password", unique = true)
+    @Column(name = "password", unique = true, nullable = false)
     String password;
     @Column(name = "active")
     boolean active = false;
