@@ -8,13 +8,19 @@ import net.karneim.pojobuilder.GeneratePojoBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -49,11 +55,14 @@ public class User implements Serializable {
     String email;
     @NotNull
     @Size(min = 3, max = 200)
-    @Column(name = "password", unique = true, nullable = false)
+    @Column(name = "password", nullable = false)
     String password;
     @Column(name = "active")
     boolean active = false;
     @Column(name = "admin")
     boolean admin = false;
-
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "role_id") })
+    Set<Role> roles = new HashSet<Role>();
 }

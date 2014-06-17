@@ -1,5 +1,7 @@
 package org.aav.guice.service.repository;
 
+import javax.persistence.criteria.CriteriaQuery;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -14,4 +16,6 @@ public interface GenericDAO<E> {
     E findById(UUID id);
 
     void delete(E entity);
+
+    List<E> findByCriteria(E query);
 }

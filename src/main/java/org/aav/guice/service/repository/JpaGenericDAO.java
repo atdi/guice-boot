@@ -12,7 +12,7 @@ import java.util.UUID;
 public abstract class JpaGenericDAO<E> implements GenericDAO<E> {
 
     @Inject
-    private EntityManager entityManager;
+    protected EntityManager entityManager;
 
     private final Class<E> clazz;
 

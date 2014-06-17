@@ -6,6 +6,7 @@ import org.aav.guice.service.repository.GenericDAO;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -36,5 +37,9 @@ public class UserService {
         return userDAO.findById(id);
     }
 
+    @Transactional
+    public List<User> findUsers() {
+        return userDAO.findByCriteria(null);
+    }
 
 }

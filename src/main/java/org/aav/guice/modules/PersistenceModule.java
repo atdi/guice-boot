@@ -3,8 +3,10 @@ package org.aav.guice.modules;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import com.google.inject.persist.jpa.JpaPersistModule;
+import org.aav.guice.model.Role;
 import org.aav.guice.model.User;
 import org.aav.guice.service.repository.GenericDAO;
+import org.aav.guice.service.repository.JpaRoleDAO;
 import org.aav.guice.service.repository.JpaUserDAO;
 
 /**
@@ -24,6 +26,9 @@ public class PersistenceModule extends AbstractModule {
         bind(JpaInitializer.class).asEagerSingleton();
         bind(new TypeLiteral<GenericDAO<User>>() {
         }).to(new TypeLiteral<JpaUserDAO>() {
+        });
+        bind(new TypeLiteral<GenericDAO<Role>>() {
+        }).to(new TypeLiteral<JpaRoleDAO>() {
         });
     }
 }
