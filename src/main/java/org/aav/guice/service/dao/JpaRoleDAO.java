@@ -1,4 +1,4 @@
-package org.aav.guice.service.repository;
+package org.aav.guice.service.dao;
 
 import org.aav.guice.model.Role;
 

@@ -1,6 +1,5 @@
-package org.aav.guice.service.repository;
+package org.aav.guice.service.dao;
 
-import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 import java.util.UUID;
 

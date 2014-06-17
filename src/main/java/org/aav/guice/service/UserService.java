@@ -2,7 +2,7 @@ package org.aav.guice.service;
 
 import com.google.inject.persist.Transactional;
 import org.aav.guice.model.User;
-import org.aav.guice.service.repository.GenericDAO;
+import org.aav.guice.service.dao.GenericDAO;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

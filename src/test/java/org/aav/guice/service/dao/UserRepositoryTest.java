@@ -1,4 +1,4 @@
-package org.aav.guice.service.repository;
+package org.aav.guice.service.dao;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -13,7 +13,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import javax.inject.Inject;
-import javax.persistence.PersistenceException;
 import javax.persistence.RollbackException;
 import java.util.List;
 import java.util.UUID;

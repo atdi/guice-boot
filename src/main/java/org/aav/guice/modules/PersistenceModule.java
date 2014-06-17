@@ -5,9 +5,9 @@ import com.google.inject.TypeLiteral;
 import com.google.inject.persist.jpa.JpaPersistModule;
 import org.aav.guice.model.Role;
 import org.aav.guice.model.User;
-import org.aav.guice.service.repository.GenericDAO;
-import org.aav.guice.service.repository.JpaRoleDAO;
-import org.aav.guice.service.repository.JpaUserDAO;
+import org.aav.guice.service.dao.GenericDAO;
+import org.aav.guice.service.dao.JpaRoleDAO;
+import org.aav.guice.service.dao.JpaUserDAO;
 
 /**
  * Created by aurel.avramescu on 15/06/2014.
