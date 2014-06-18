@@ -6,13 +6,11 @@ import org.aav.guice.model.User;
 import org.aav.guice.model.UserBuilder;
 import org.aav.guice.modules.PersistenceModule;
 import org.aav.guice.modules.ResourcesModule;
-import org.aav.guice.service.dao.GenericDAO;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
-import java.util.UUID;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
